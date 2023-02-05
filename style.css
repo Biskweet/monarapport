@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,700;1,500;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Vidaloka&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
 
 .subsection {
     position: center;
@@ -31,6 +31,19 @@
     font-weight: 500;
 }
 
+/* Yellow circle */
+#title:after {
+    content: '';
+    top: -0.5em;
+    left: 0.5em;
+    width: 4em;
+    height: 4em;
+    background: #fbe801;
+    border-radius: 50%;
+    z-index: -1;
+    position: absolute;
+}
+
 .subsection-header {
     font-family: 'EB Garamond', serif;
     font-weight: lighter;
@@ -43,15 +56,21 @@ p {
     hyphens: auto;
 }
 
-/* Yellow circle */
-#title:after {
-    content: '';
-    top: -0.5em;
-    left: 0.5em;
-    width: 4em;
-    height: 4em;
-    background: #fbe801;
-    border-radius: 50%;
-    z-index: -1;
-    position: absolute;
+code {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: #EFF1F3;
+    border-radius: 4px;
+    padding: 0.2em 0.4em;
+}
+
+li {
+    font-family: 'EB Garamond', serif;
+    margin: 0.5em auto;
+    font-size: 22px;
+}
+
+a {
+    color: #00E;
 }
