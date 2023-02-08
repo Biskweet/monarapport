@@ -36,9 +36,9 @@
                 Après quelques recherches, je doute qu'il soit plus facile de refaire une app avec
                 <a href="https://reactjs.org/"><code>React.js</code></a> (trop de travail), mais j'ai vu
                 <a href="https://ionicframework.com/"><code>Ionic</code></a> qui pourrait être intéressant. <br> <br>
-                Update lundi 6 : J'ai patché le bug de l'oeuvre du jour (section vide, à cause d'une sélection aléatoire invalide
-                d'une oeuvre), qui menait au crash de l'application si l'on essayait depuis la page de
-                l'oeuvre du jour de :
+                <u>Update lundi 6 :</u> j'ai patché le bug de l'oeuvre du jour (section vide, à cause d'une sélection
+                aléatoire invalide d'une oeuvre), qui menait au crash de l'application si l'on essayait depuis
+                la page de l'oeuvre du jour de :
             </p>
                 <ul>
                     <li>Prendre une photo ;</li>
@@ -46,9 +46,27 @@
                     <li>Accéder à son emplacement sur la carte.</li>
                 </ul>
             <p>
+                En fait, l'ancien code déterminait l'ID de l'oeuvre en partant du numéro de mois notamment, et
+                le divisait par 2. Cependant les mois de janvier et février ont les numéros respectifs 0 et 1,
+                et la division euclidienne par 2 renvoie donc 0 pour ces deux-là, ce qui mène à un
+                <code>ID = 0</code>, qui est bien sûr invalide. J'ai décidé de déterminer l'ID de l'oeuvre en
+                initialisant un RNG (Random Number Generator) avec une <em>seed</em> unique dans le temps
+                (JOUR_ANNEE * 10000 + ANNEE), puis en générant un entier entre 1 et la taille de la DB des
+                oeuvres. <br>
                 Je vais essayer de résoudre le problème de caméra qui affecte les Google Pixel d'ici mercredi 8
-                prochain. <br> <br>
-                Update mardi 7 : j'ai résolu le problème de l'appareil photo cassé sur les Google Pixel !
+                prochain. <br>
+                <br>
+                <u>Update mardi 7 :</u> j'ai résolu le problème de l'appareil photo cassé sur les Google Pixel !
+                Le problème était causé par une mauvaise syntaxe de la fonction
+                <code>dispatchTakePictureIntent</code> de la classe <code>OeuvreJourFragment</code>. <br>
+                <u>Update mardi 7, plus tard :</u> il semblerait que le bug persiste hors du contexte de
+                l'oeuvre du jour... Le problème, c'est que je n'arrive pas à déterminer la section qui gère ce
+                bouton. <br>
+                Il faut aussi que je pense à demander quoi sert le pin sur la carte lors de la prochaine
+                réunion.<br>
+                <u>Update mardi 7 (encore) :</u> j'ai enfin réussi à supprimer l'exception levée à l'obtention
+                de certains badges ! Il arrivait qu'un booléen soit <code>null</code> ce qui levait une
+                exception d'assertion.
             </p>
         </div>
 
