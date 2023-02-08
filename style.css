@@ -49,6 +49,13 @@
     font-weight: lighter;
 }
 
+.subsection-header span {
+    border-bottom: 2px solid black;
+    padding-right: 5px;
+
+}
+
+
 p {
     font-family: 'EB Garamond', serif;
     font-size: 22px;
