@@ -6,8 +6,8 @@
 .subsection {
     position: center;
     text-align: justify;
-    margin-left: 20em;
-    margin-right: 20em;
+    margin-left: 18em;
+    margin-right: 18em;
     margin-top: 3em;
 }
 
@@ -61,6 +61,7 @@ p {
     font-size: 22px;
     text-indent: 1em;
     hyphens: auto;
+    margin-top: 1em;
 }
 
 code {
@@ -78,6 +79,44 @@ li {
     font-size: 22px;
 }
 
+ul {
+    margin-bottom: 1em;
+}
+
 a {
     color: #00E;
+}
+
+table {
+    font-size: 22px;
+    font-family: 'EB Garamond', serif;
+    width: 100%;
+    text-align: right;
+    /* border: 1px solid red; */
+    margin: 0;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 0.5px solid #d9d9d9;
+    padding: 7px;
+}
+
+td:first-child {
+    text-align: left;
+    background-color: #f6f6f6;
+}
+
+th {
+    background-color: #f6f6f6;
+}
+
+video {
+    width: 30%;
+    display: block;
+    margin: auto;
+}
+
+.media {
+    margin: 3em auto;
 }

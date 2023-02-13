@@ -51,18 +51,18 @@
                 et la division euclidienne par 2 renvoie donc 0 pour ces deux-là, ce qui mène à un
                 <code>ID = 0</code>, qui est bien sûr invalide. J'ai décidé de déterminer l'ID de l'oeuvre en
                 initialisant un RNG (Random Number Generator) avec une <em>seed</em> unique dans le temps
-                (JOUR_ANNEE * 10000 + ANNEE), puis en générant un entier entre 1 et la taille de la DB des
+                <code>(JOUR_ANNEE * 10000 + ANNEE)</code>, puis en générant un entier entre 1 et la taille de la DB des
                 oeuvres. <br>
                 Je vais essayer de résoudre le problème de caméra qui affecte les Google Pixel d'ici mercredi 8
                 prochain. <br>
-                <br>
+                <br> <br>
                 <u>Update mardi 7 :</u> j'ai résolu le problème de l'appareil photo cassé sur les Google Pixel !
                 Le problème était causé par une mauvaise syntaxe de la fonction
                 <code>dispatchTakePictureIntent</code> de la classe <code>OeuvreJourFragment</code>. Normalement
-                le problème ne devrait plus réapparaître.<br>
+                le problème ne devrait plus réapparaître.<br> <br>
                 <u>Update mardi 7, plus tard :</u> il semblerait que le bug persiste hors du contexte de
                 l'oeuvre du jour... Le problème, c'est que je n'arrive pas à déterminer la section qui gère ce
-                bouton. <br>
+                bouton. <br> <br>
                 <u>Update mardi 7 (encore) :</u> j'ai enfin réussi à supprimer l'exception levée à l'obtention
                 de certains badges ! Il arrivait qu'un booléen soit <code>null</code> ce qui levait une
                 exception d'assertion.
@@ -71,10 +71,85 @@
 
         <div class="subsection">
             <h1 class="subsection-header">
-                <span></span>
+                <span>Semaine 3 (rendez-vous du 8/02)</span>
             </h1>
             <p class="subsection-paragraph">
+                À la dernière réunion, on a discuté d'une réécriture complète de l'application, en
+                Kotlin ou probablement dans un autre langage avec l'aide d'un framework : quitte à
+                devoir réécrire le code en vue de la migration vers l'API v3, ce serait peut-être
+                une bonne occasion pour faire table rase. <br>
+                Lena m'a chargé de faire un comparatif des frameworks/langages du marché pour se faire
+                une idée et potentiellement en choisir un. On tombe assez rapidement sur 3
+                possibilités : <a href="https://flutter.dev/">Flutter</a>,
+                <a href="https://reactnative.dev/">React Native</a> et <a href="https://ionicframework.com/">Ionic</a>.
             </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th></td>
+                        <th>Ionic</td>
+                        <th>React Native</td>
+                        <th>Flutter</td>
+                        <th>Kotlin</td>
+                        <th>Swift</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Performances</td>
+                        <td>Bonnes</td>
+                        <td>Bonnes</td>
+                        <td>Très bonnes</td>
+                        <td>Maximales</td>
+                        <td>Maximales</td>
+                    </tr>
+                    <tr>
+                        <td>Taille APK <em>"Hello world!"</em></td>
+                        <td>3500 Ko</td>
+                        <td>7000 Ko</td>
+                        <td>7500 Ko</td>
+                        <td>550 Ko</td>
+                        <td>??</td>
+                    </tr>
+                    <tr>
+                        <td>Avantage particulier</td>
+                        <td>Très facile à apprendre, multi-plateforme</td>
+                        <td>Utile pour le multi-plateforme proche des éléments natifs</td>
+                        <td>Agréable à développer, performant</td>
+                        <td>Natif, 100% compatible JVM, performant</td>
+                        <td>Natif, facile à développer, performant</td>
+                    </tr>
+                    <tr>
+                        <td>Désavantage particulier</td>
+                        <td>Peu adapté aux projets de grande échelle</td>
+                        <td>Apprendissage relativement difficile</td>
+                        <td>Nécessite la connaissance de Dart</td>
+                        <td>Verbeux, contraignant, assez laid</td>
+                        <td>Exclusif aux produits Apple</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                Tous les langages/frameworks peuvent utiliser les composants de
+                l'appareil, caméra, GPS ou stockage. J'ai un peu de mal à saisir la différence entre Ionic et React Native,
+                mais je crois qu'alors que React Native manipule des éléments natifs
+                par une sous-couche Kotlin (et passe par le JS pour l'implémentation),
+                Ionic utilise un arbre DOM, en HTML couplé au CSS pour le rendu ; cela
+                vient avec tous les défauts et qualités du Web, notamment pour les
+                performances. <br>
+                Cependant, le <a href="https://ionic.io/blog/ionic-vs-react-native-performance-comparison">post de blog de Ionic</a>
+                (et malgré son biais évident), montre que les performances des deux se
+                valent, voire une meilleure utilisation GPU d'Ionic selon l'analyseur
+                de Xcode. <br><br>
+                <u>Update vendredi 10 :</u> j'ai essayé à reproduire l'interface de base
+                de l'application sur Ionic. Ca semble assez facile, bien que la tentative
+                reste très simple et reste de l'interface.
+            </p>
+
+            <div class="media">
+                <video playsinline autoplay muted loop src="ionic-proofofconcept-1.mp4"></video>
+            </div>
         </div>
     </div>
 </body>
