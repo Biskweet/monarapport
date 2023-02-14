@@ -132,12 +132,12 @@
             </table>
             <p>
                 Tous les langages/frameworks peuvent utiliser les composants de
-                l'appareil, caméra, GPS ou stockage. J'ai un peu de mal à saisir la différence entre Ionic et React Native,
-                mais je crois qu'alors que React Native manipule des éléments natifs
-                par une sous-couche Kotlin (et passe par le JS pour l'implémentation),
-                Ionic utilise un arbre DOM, en HTML couplé au CSS pour le rendu ; cela
-                vient avec tous les défauts et qualités du Web, notamment pour les
-                performances. <br>
+                l'appareil, caméra, GPS ou stockage. J'ai un peu de mal à saisir la
+                différence entre Ionic et React Native, mais je crois qu'alors que
+                React Native manipule des éléments natifs par une sous-couche Kotlin
+                (et passe par le JS pour l'implémentation), Ionic utilise un arbre DOM,
+                en HTML couplé au CSS pour le rendu ; cela vient avec tous les défauts
+                et qualités du Web, notamment pour les performances. <br>
                 Cependant, le <a href="https://ionic.io/blog/ionic-vs-react-native-performance-comparison">post de blog de Ionic</a>
                 (et malgré son biais évident), montre que les performances des deux se
                 valent, voire une meilleure utilisation GPU d'Ionic selon l'analyseur
@@ -150,6 +150,16 @@
             <div class="media">
                 <video playsinline autoplay muted loop src="ionic-proofofconcept-1.mp4"></video>
             </div>
+
+            <p>
+                <u>Update mardi 14 :</u> l'application se souvient maintenant de la position de
+                la carte et de son niveau niveau de Zoom avant d'accéder aux détails d'une oeuvre.
+                Plus besoin de se déplacer parce qu'on a perdu l'endroit qu'on observait ! <br>
+                J'ai beaucoup amélioré les performances lorsqu'on veut accéder aux détails d'une
+                oeuvre, si bien que il est maintenant rare qu'on remarque un délai. En revanche il
+                arrive quand même que ça prenne du temps donc je vais implémenter une fenêtre
+                d'alerte pour informer l'utilisateur du chargement.
+            </p>
         </div>
     </div>
 </body>
