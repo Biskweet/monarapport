@@ -71,105 +71,21 @@
 
         <div class="subsection">
             <h1 class="subsection-header">
-                <span>Semaine 3 (rendez-vous du 8/02)</span>
+                <span>Semaine 4 (rendez-vous du 15/02)</span>
             </h1>
             <p class="subsection-paragraph">
-                À la dernière réunion, on a discuté d'une réécriture complète de l'application, en
-                Kotlin ou probablement dans un autre langage avec l'aide d'un framework : quitte à
-                devoir réécrire le code en vue de la migration vers l'API v3, ce serait peut-être
-                une bonne occasion pour faire table rase. <br>
-                Lena m'a chargé de faire un comparatif des frameworks/langages du marché pour se faire
-                une idée et potentiellement en choisir un. On tombe assez rapidement sur 3
-                possibilités : <a href="https://flutter.dev/">Flutter</a>,
-                <a href="https://reactnative.dev/">React Native</a> et <a href="https://ionicframework.com/">Ionic</a>.
+                Nous avons pu rencontrer Guy Lapalme à l'occasion de la dernière réunion. J'ai pu y présenter
+                les différentes alternatives qui se présentent à l'équipe, dans l'optique de reconstruire
+                l'application. De toutes les options, la majorité du groupe a penché vers Ionic. <br>
+                Je me suis attelé à l'apprentissage d'Ionic auquel est associé <a href="https://vuejs.org/">Vue.js</a>
+                <br>
+                J'ai eu du mal à implémenter la carte dans l'application en utilisant <a href="https://leafletjs.com/">Leaflet</a>,
+                si bien que j'ai fini par abandonner au profit d'<a href="https://openlayers.org/">OpenLayers</a>.
+                L'intégration était beaucoup plus naturelle et c'était plus agréable. Je me suis ensuite concentré
+                sur la création des classes de bases de données de l'application. J'ai pu télécharger les
+                données automatiquement depuis l'API V3, mais je n'ai pas encore réussi à écrire le contenu
+                dans un fichier stable.
             </p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th></td>
-                        <th>Ionic</td>
-                        <th>React Native</td>
-                        <th>Flutter</td>
-                        <th>Kotlin</td>
-                        <th>Swift</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Performances</td>
-                        <td>Bonnes</td>
-                        <td>Bonnes</td>
-                        <td>Très bonnes</td>
-                        <td>Maximales</td>
-                        <td>Maximales</td>
-                    </tr>
-                    <tr>
-                        <td>Taille APK <em>"Hello world!"</em></td>
-                        <td>3500 Ko</td>
-                        <td>7000 Ko</td>
-                        <td>7500 Ko</td>
-                        <td>550 Ko</td>
-                        <td>??</td>
-                    </tr>
-                    <tr>
-                        <td>Nombre de posts StackOverflow</td>
-                        <td>47921</td>
-                        <td>128596</td>
-                        <td>154782</td>
-                        <td>84926</td>
-                        <td>324591</td>
-                    </tr>
-                    <tr>
-                        <td>Avantage particulier</td>
-                        <td>Très facile à apprendre, multi-plateforme</td>
-                        <td>Utile pour le multi-plateforme proche des éléments natifs</td>
-                        <td>Agréable à développer, performant</td>
-                        <td>Natif, 100% compatible JVM, performant</td>
-                        <td>Natif, facile à développer, performant</td>
-                    </tr>
-                    <tr>
-                        <td>Désavantage particulier</td>
-                        <td>Peu adapté aux projets de grande échelle</td>
-                        <td>Apprendissage relativement difficile</td>
-                        <td>Nécessite la connaissance de Dart</td>
-                        <td>Verbeux, contraignant, assez laid</td>
-                        <td>Exclusif aux produits Apple</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p>
-                Tous les langages/frameworks peuvent utiliser les composants de
-                l'appareil, caméra, GPS ou stockage. J'ai un peu de mal à saisir la
-                différence entre Ionic et React Native, mais je crois qu'alors que
-                React Native manipule des éléments natifs par une sous-couche Kotlin
-                (et passe par le JS pour l'implémentation), Ionic utilise un arbre DOM,
-                en HTML couplé au CSS pour le rendu ; cela vient avec tous les défauts
-                et qualités du Web, notamment pour les performances. <br>
-                Cependant, le <a href="https://ionic.io/blog/ionic-vs-react-native-performance-comparison">post de blog de Ionic</a>
-                (et malgré son biais évident), montre que les performances des deux se
-                valent, voire une meilleure utilisation GPU d'Ionic selon l'analyseur
-                de Xcode. <br><br>
-                <u>Update vendredi 10 :</u> j'ai essayé de reproduire l'interface de base
-                de l'application sur Ionic. Ca semble assez facile, bien que la tentative
-                reste très simple et se limite à l'interface.
-            </p>
-
-            <div class="media">
-                <video playsinline autoplay muted loop src="ionic-proofofconcept-1.webm"></video>
-            </div>
-
-            <p>
-                <u>Update mardi 14 :</u> l'application se souvient maintenant de la position de
-                la carte et de son niveau niveau de Zoom avant d'accéder aux détails d'une oeuvre.
-                Plus besoin de se déplacer parce qu'on a perdu l'endroit qu'on observait ! J'ai mis
-                la nouvelle version de MONA en test interne, normalement les testeurs y ont accès. <br>
-                J'ai beaucoup amélioré les performances lorsqu'on veut accéder aux détails d'une
-                oeuvre, si bien que il est maintenant rare qu'on remarque un délai. En revanche il
-                arrive quand même que ça prenne du temps, donc je vais essayer d'implémenter une
-                fenêtre d'alerte pour informer l'utilisateur du chargement.
-            </p>
-        </div>
     </div>
 </body>
 </html>
