@@ -207,8 +207,9 @@
                 J'ai ajouté la prise de photo, puis j'ai conçu la page de review d'une œuvre. En revanche, impossible
                 de téléverser la vidéo au serveur. J'ai passé 4 joursà essayer différentes méthodes mais je serveur me
                 renvoie inévitablement une <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422">
-                erreur code 422</a>. J'ai essayé tellement de manière différentes, je me demande si le serveur n'accepte
-                pas un format de données particulier, et <a href="https://github.com/imglab/mona-server/wiki/Artworks-API-Endpoints#post-apiv3userartworks">la documentation</a> n'est pas assez précise.
+                erreur code 422</a> avec comme "explication" : <code>{'message': 'The given data was invalid.', 'errors': {'photo': ['The photo must be a file of type: jpeg, jpg, png.']}}</code>. J'ai essayé tellement de manière différentes, je me demande si le serveur n'accepte pas un format de données particulier, et
+                <a href="https://github.com/imglab/mona-server/wiki/Artworks-API-Endpoints#post-apiv3userartworks">la documentation</a> n'est pas assez précise.
+
             </p>
         </div>
     </div>
