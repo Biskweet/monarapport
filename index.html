@@ -201,11 +201,31 @@
                 pour les 2. Il faut maintenant travailler sur le code interne.
                 <br><br>
                 J'ai ajouté la prise de photo, puis j'ai conçu la page de review d'une œuvre. En revanche, impossible
-                de téléverser la vidéo au serveur. J'ai passé 4 joursà essayer différentes méthodes mais je serveur me
+                de téléverser la photo au serveur. J'ai passé 4 jours à essayer différentes méthodes mais je serveur me
                 renvoie inévitablement une <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422">
                 erreur code 422</a> avec comme "explication" : <code>{'message': 'The given data was invalid.', 'errors': {'photo': ['The photo must be a file of type: jpeg, jpg, png.']}}</code>. J'ai essayé tellement de manière différentes, je me demande si le serveur n'accepte pas un format de données particulier, et
                 <a href="https://github.com/imglab/mona-server/wiki/Artworks-API-Endpoints#post-apiv3userartworks">la documentation</a> n'est pas assez précise.
+            </p>
+        </div>
 
+        <div class="subsection">
+            <h1 class="subsection-header">
+                <span>Semaine 7 (pas de rendez-vous)</span>
+            </h1>
+            <p class="subsection-paragraph">
+                Le problème de téléversement est résolu ! Abdelhakim s'est penché sur le problème et a réussi à
+                trouver un moyen de faire la requête correctement, tout fonctionne maintenant (merci à lui!). J'ai donc
+                pu finir le système de prise de photo et cela fonctionne maintenant (enfin presque : il arrive
+                que la photo ne soit pas prise en compte localement, il faut que je regarde pourquoi). <br>
+                D'un autre côté, j'ai retravaillé complètement la manière dont les pins sont affichés sur la
+                carte, maintenant tous les pins (peu importe leur asset) sont affichés sur une seule <em>layer</em>
+                alors qu'il en fallait une par asset auparavant (approximativement une dizaine). <br>
+                Je réfléchis aussi à retirer le bouton de changement du fond de carte. En effet, il manque des tuiles
+                aux fonds <em>Stamen</em> à partir d'un certain zoom
+                (<a href="https://github.com/stamen/maps.stamen.com/issues/97">issue #97</a>). <br>
+                J'ai mis en place le système de popup focus sur la carte quand on clique sur une découverte. Normalement tout
+                fonctionne correctement en termes de focus/unfocus automatique (on appuie ailleurs par exemple). Idéalement il
+                faudrait que j'augmente la hitbox des pins (ou celle du clic) pour faciliter l'UX.
             </p>
         </div>
     </div>
