@@ -252,6 +252,44 @@
             </p>
         </div>
 
+        <div class="subsection">
+            <h1 class="subsection-header">
+                <span>Semaine 9 (pas de rendez-vous)</span>
+            </h1>
+            <p class="subsection-paragraph">
+                J'ai bien avancé sur la structure générale. J'ai pu implémenter :
+                <ul>
+                    <li>la page Liste</li>
+                    <li>la page Collection</li>
+                    <li>la page Autres</li>
+                    <li>les sous-pages "À propos" et "Qui sommes-nous ?"</li>
+                    <li>le tutoriel</li>
+                </ul>
+                En plus de cela, j'ai retravaillé l'onglet carte pour améliorer encore les performances :
+                plutôt que de mettre 1 layer par style de feature, j'ai réussi à mettre tous les pins sur une
+                seule layer. <br><br>
+                J'ai aussi pu gérer les permissions et le moment où elles sont demandées, et j'ai ajouté une
+                page qui s'ouvre s'il manque des permissions à l'application.
+            </p>
+        </div>
+
+        <div class="subsection">
+            <h1 class="subsection-header">
+                <span>Semaine 10 (rendez-vous du 29/03)</span>
+            </h1>
+            <p class="subsection-paragraph">
+                J'ai réussi à implémenter la récupération des données (collection, et photos s'il y en a) au
+                moment de la connexion, ainsi que la fonctionnalité qui permet à la DB de se mettre à jour
+                toute seule. Je n'ai pas pu tester cette dernière cependant, mais le code est assez simple donc
+                je doute qu'il y ait des problèmes. J'ai rencontré un problème : le serveur bloque les requêtes
+                au-delà de 60/minutes. J'ai demandé à Natacha d'augmenter cette limite à 240/minutes mais
+                il faudra tôt ou tard implémenter une classe pour gérer les temps d'attente forcés. <br><br>
+                J'ai aussi pu mettre à jour l'application sur le Play Store en interne avec cette version.
+                C'était assez facile, je m'attendais à avoir des problèmes avec les permissions mais il semble
+                que non. J'en ai profité pour changer les images d'illustration de la page de l'app, qui datent
+                trop et qui sont en trop mauvaise résolution.
+            </p>
+        </div>
     </div>
 </body>
 </html>
