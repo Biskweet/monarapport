@@ -6,356 +6,354 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rapport MONA Gaspard D.-M.</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
     <div class="container">
         <div class="presentation">
-            <h1 id="title">
-                MONA Android<br>hiver 2023
-            </h1>
-            <h4 id="name">
-                Gaspard Damoiseau-Malraux</h4>
-            </div>
-            <div class="content">
-                <div class="entry">
-                    <h1 class="entry-header">
-                        <span>Semaine 1 (rendez-vous du 25/01)</span>
-                    </h1>
-                    <p class="entry-paragraph">
-                        Rencontre de l'équipe et présentation du projet MONA par Lena via Zoom. Découverte des outils,
-                        des enjeux et des problématiques.
-                    </p>
-                    <p class="entry-paragraph">
-                        Utilisation de l'application Android pour un état des lieux. Téléchargement
-                        d'Android Studio et début d'apprentissage de Kotlin.
-                    </p>
-                </div>
-                <div class="entry">
-                    <h1 class="entry-header">
-                        <span>Semaine 2 (rendez-vous du 01/02)</span>
-                    </h1>
-                    <p class="entry-paragraph">
-                        Apprentissage du Kotlin, familiarisation avec le code de l'application ; je n'ai pas
-                        d'expérience en développement Android. Je lis les rapports des anciens étudiants pour
-                        avoir une idée globale. Après quelques recherches, je doute qu'il soit plus facile de refaire
-                        une app avec <a href="https://reactjs.org/"><code>React.js</code></a> (trop de travail), mais
-                        j'ai vu <a href="https://ionicframework.com/"><code>Ionic</code></a> qui pourrait être
-                        intéressant.
-                    </p>
-                    <p class="entry-paragraph"> </p>
-                    <p class="entry-paragraph">
-                        <u>Update lundi 6 :</u> j'ai patché le bug de l'œuvre du jour (section vide, à cause d'une sélection
-                        aléatoire invalide d'une œuvre), qui menait au crash de l'application si l'on essayait depuis
-                        la page de l'œuvre du jour de :
-                    </p>
-                    <ul>
-                        <li>Prendre une photo ;</li>
-                        <li>Cibler l'œuvre d'art ;</li>
-                        <li>Accéder à son emplacement sur la carte.</li>
-                    </ul>
-                    <p class="entry-paragraph">
-                        En fait, l'ancien code déterminait l'ID de l'œuvre en partant du numéro de mois notamment, et
-                        le divisait par 2. Cependant les mois de janvier et février ont les numéros respectifs 0 et 1,
-                et la division euclidienne par 2 renvoie donc 0 pour ces deux-là, ce qui mène à un
-                <code>ID = 0</code>, qui est bien sûr invalide. J'ai décidé de déterminer l'ID de l'œuvre en
-                initialisant un RNG (Random Number Generator) avec une <em>seed</em> unique dans le temps
-                <code>(JOUR_ANNEE * 10000 + ANNEE)</code>, puis en générant un entier entre 1 et la taille de la DB des
-                œuvres.
-            </p>
-            <p class="entry-paragraph">
-                Je vais essayer de résoudre le problème de caméra qui affecte les Google Pixel d'ici mercredi 8
-                prochain.
-            </p>
-            <p class="entry-paragraph">
-            </p>
-            <p class="entry-paragraph"> </p>
-            <p class="entry-paragraph">
-                <u>Update mardi 7 :</u> j'ai résolu le problème de l'appareil photo cassé sur les Google Pixel !
-                Le problème était causé par une mauvaise syntaxe de la fonction
-                <code>dispatchTakePictureIntent</code> de la classe <code>œuvreJourFragment</code>. Normalement
-                le problème ne devrait plus réapparaître.
-            </p>
-            <p class="entry-paragraph"> </p>
-            <p class="entry-paragraph">
-                <u>Update mardi 7, plus tard :</u> il semblerait que le bug persiste hors du contexte de
-                l'œuvre du jour... Le problème, c'est que je n'arrive pas à déterminer la section qui gère ce
-                bouton.
-            </p>
-            <p class="entry-paragraph"> </p>
-            <p class="entry-paragraph">
-                <u>Update mardi 7 (encore) :</u> j'ai enfin réussi à supprimer l'exception levée à l'obtention
-                de certains badges ! Il arrivait qu'un booléen soit <code>null</code> ce qui levait une
-                exception d'assertion.
-            </p>
+            <h1 id="title">MONA Android<br>hiver 2023</h1>
+            <h4 id="name">Gaspard Damoiseau-Malraux</h4>
         </div>
-        <div class="entry">
-            <h1 class="entry-header">
-                <span>Semaine 3 (rendez-vous du 8/02)</span>
-            </h1>
-            <p class="entry-paragraph">
-                À la dernière réunion, on a discuté d'une réécriture complète de l'application, en
-                Kotlin ou probablement dans un autre langage avec l'aide d'un framework : quitte à
-                devoir réécrire le code en vue de la migration vers l'API v3, ce serait peut-être
-                une bonne occasion pour faire table rase.
-            </p>
-            <p class="entry-paragraph">
-                Lena m'a chargé de faire un comparatif des frameworks/langages du marché pour se faire
-                une idée et potentiellement en choisir un. On tombe assez rapidement sur 3
-                possibilités : <a href="https://flutter.dev/">Flutter</a>,
-                <a href="https://reactnative.dev/">React Native</a> et <a href="https://ionicframework.com/">Ionic</a>.
-            </p>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th></td>
-                                <th>Ionic</td>
-                                    <th>React Native</td>
-                                        <th>Flutter</td>
-                            <th>Kotlin</td>
-                                <th>Swift</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Performances</td>
-                                    <td>Bonnes</td>
-                                    <td>Bonnes</td>
-                                    <td>Très bonnes</td>
-                                    <td>Maximales</td>
-                                    <td>Maximales</td>
-                                </tr>
-                                <tr>
-                                    <td>Taille APK <em>"Hello world!"</em></td>
-                                    <td>3500 Ko</td>
-                                    <td>7000 Ko</td>
-                                    <td>7500 Ko</td>
-                                    <td>550 Ko</td>
-                                    <td>??</td>
-                                </tr>
-                                <tr>
-                                    <td>Avantage particulier</td>
-                                    <td>Très facile à apprendre, multi-plateforme</td>
-                            <td>Utile pour le multi-plateforme proche des éléments natifs</td>
-                            <td>Agréable à développer, performant</td>
-                            <td>Natif, 100% compatible JVM, performant</td>
-                            <td>Natif, facile à développer, performant</td>
-                        </tr>
-                        <tr>
-                            <td>Désavantage particulier</td>
-                            <td>Peu adapté aux projets de grande échelle, feeling web</td>
-                            <td>Apprendissage relativement difficile</td>
-                            <td>Nécessite la connaissance de Dart</td>
-                            <td>Verbeux, contraignant, relativement laid</td>
-                            <td>Exclusif aux produits Apple</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <p class="entry-paragraph">
-                Tous les langages/frameworks peuvent utiliser les composants de
-                l'appareil (caméra, GPS et stockage). J'ai un peu de mal à saisir la différence entre Ionic et React Native,
-                mais je crois qu'alors que React Native manipule des éléments natifs
-                par une sous-couche Kotlin (et passe par le JS pour l'implémentation),
-                Ionic utilise un arbre DOM, en HTML couplé au CSS pour le rendu ; cela
-                vient avec tous les défauts et qualités du Web, notamment pour les
-                performances.
-            </p>
-            <p class="entry-paragraph">
-                Cependant, le <a href="https://ionic.io/blog/ionic-vs-react-native-performance-comparison">post de blog de Ionic</a>
-                (et malgré son biais évident), montre que les performances des deux se
-                valent, voire une meilleure utilisation GPU d'Ionic selon l'analyseur
-                de Xcode.
-            </p>
-            <p class="entry-paragraph">
-                <u>Update vendredi 10 :</u> j'ai essayé de reproduire l'interface de base
-                de l'application sur Ionic. Ca semble assez facile, bien que la tentative
-                reste très simple et reste de l'interface.
-            </p>
-        </div>
-        <div class="entry">
-            <h1 class="entry-header">
-                <span>Semaine 4 (rendez-vous du 15/02)</span>
-            </h1>
-            <p class="entry-paragraph">
-                Nous avons pu rencontrer Guy Lapalme à l'occasion de la dernière réunion. J'ai pu y présenter
-                les différentes alternatives qui se présentent à l'équipe, dans l'optique de reconstruire
-                l'application. De toutes les options, la majorité du groupe a penché vers Ionic.
-            </p>
-            <p class="entry-paragraph">
-                Je me suis attelé à l'apprentissage d'Ionic auquel est associé <a href="https://vuejs.org/">Vue.js</a>
-            </p>
-            <p class="entry-paragraph">
-                J'ai eu du mal à implémenter la carte dans l'application en utilisant <a href="https://leafletjs.com/">Leaflet</a>,
-                si bien que j'ai fini par abandonner au profit d'<a href="https://openlayers.org/">OpenLayers</a>.
-                L'intégration était beaucoup plus naturelle et c'était plus agréable. Je me suis ensuite concentré
-                sur la création des classes de bases de données de l'application. J'ai pu télécharger les
-                données automatiquement depuis l'API V3, mais je n'ai pas encore réussi à écrire le contenu
-                dans un fichier stable.
-            </p>
-        </div>
-        <div class="entry">
-            <h1 class="entry-header">
-                <span>Semaine 5 (rendez-vous du 24/02)</span>
-            </h1>
-            <p class="entry-paragraph">
-                Nous avons eu une réunion avec Barbara, la graphiste. Elle a conçu un nouveau tutoriel
-                et nous a expliqué comment se servir de Figma pour exporter les différents assets dont
-                on peut avoir besoin. C'était très intéressant.
-            </p>
-            <p class="entry-paragraph">
-                <u>Update 25/02 :</u> j'ai réussi à faire en sorte que l'application lise et écrive dans
-                des fichiers.
-            </p>
-            <p class="entry-paragraph">
-                <u>Update 26/02 :</u> j'ai changé le style de la carte de
-                <a href="http://maps.stamen.com/watercolor/#12/37.7794/-122.3631">Watercolor</a> à
-                <a href="http://maps.stamen.com/toner-lite/#12/37.7706/-122.3782">Toner Lite</a>. C'était
-                marrant mais pas très accessible come style de tuiles.
-            </p>
-            <p class="entry-paragraph">
-                <u>Update 01/03 :</u> j'a retravaillé la page de découverte du jour. Elle est plus propre
-                en termes de code, et correspond mieux aux mockups du Figma.
-            </p>
-        </div>
-        <div class="entry">
-            <h1 class="entry-header">
-                <span>Semaine 6 (rendez-vous du 02/03)</span>
-            </h1>
-            <p class="entry-paragraph">
-                Je poursuis le travail de l'application. J'ai essayé de faire un splash screen pour
-                temporiser le temps que l'application récupère les données. Au final, j'ai trouvé une meilleure
-                solution qui consiste à lancer les bases de données avant l'ouverture de l'application pour
-                éviter de lancer l'interface avant le chargement des œuvres. Je compte maintenant travailler
-                sur la prise de photo depuis la page des détails d'une découverte.
-            </p>
-            <p class="entry-paragraph">
-                <u>Update 04/03 :</u> je suis en train d'implémenter la prise de photos depuis les détails d'une
-                oeuvre. Je travaille aussi sur la page de notation d'une œuvre. L'apparence devrait être terminée
-                pour les 2. Il faut maintenant travailler sur le code interne.
-            </p>
-            <p class="entry-paragraph">
-                J'ai ajouté la prise de photo, puis j'ai conçu la page de review d'une œuvre. En revanche, impossible
-                de téléverser la photo au serveur. J'ai passé 4 jours à essayer différentes méthodes mais je serveur me
-                renvoie inévitablement une <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422">
-                    erreur code 422</a> avec comme "explication" : <code>{'message': 'The given data was invalid.', 'errors': {'photo': ['The photo must be a file of type: jpeg, jpg, png.']}}</code>. J'ai essayé tellement de manière différentes, je me demande si le serveur n'accepte pas un format de données particulier, et
-                    <a href="https://github.com/imglab/mona-server/wiki/Artworks-API-Endpoints#post-apiv3userartworks">la documentation</a> n'est pas assez précise.
+        <div class="content">
+            <div class="entry">
+                <h1 class="entry-header">
+                    <span>Semaine 1 (rendez-vous du 25/01)</span>
+                </h1>
+                <p class="entry-paragraph">
+                    Rencontre de l'équipe et présentation du projet MONA par Lena via Zoom. Découverte des outils,
+                    des enjeux et des problématiques.
+                </p>
+                <p class="entry-paragraph">
+                    Utilisation de l'application Android pour un état des lieux. Téléchargement
+                    d'Android Studio et début d'apprentissage de Kotlin.
                 </p>
             </div>
             <div class="entry">
                 <h1 class="entry-header">
-                    <span>Semaine 7 (pas de rendez-vous)</span>
+                    <span>Semaine 2 (rendez-vous du 01/02)</span>
                 </h1>
                 <p class="entry-paragraph">
-                    Le problème de téléversement est résolu ! Abdelhakim s'est penché sur le problème et a réussi à
-                    trouver un moyen de faire la requête correctement (merci à lui et à Thomas de m'avoir aidé).
-                    J'ai donc pu finir le système de prise de photo et ça fonctionne (enfin presque : il arrive que
-                la photo ne soit pas prise en compte localement et ça marche au 2<sup>e</sup> essai, il faut
-                que je regarde pourquoi).
-            </p>
-            <p class="entry-paragraph">
-                D'un autre côté, j'ai retravaillé complètement la manière dont les pins sont affichés sur la
-                carte, maintenant tous les pins (peu importe leur asset) sont affichés sur une seule <em>layer</em>
-                alors qu'il en fallait une par asset auparavant (approximativement une dizaine). Je réfléchis
-                aussi à retirer le bouton de changement du fond de carte. En effet, il manque des tuiles aux fonds
-                <em>Stamen</em> à partir d'un certain zoom (<a href="https://github.com/stamen/maps.stamen.com/issues/97">issue #97</a>).
-            </p>
-            <p class="entry-paragraph">
-                J'ai mis en place le système de popup focus sur la carte quand on clique sur une découverte.
-                Normalement tout fonctionne correctement en termes de focus/unfocus automatique (unfocus si on
-                appuie ailleurs par exemple). Idéalement il faudrait que j'augmente la hitbox des pins (ou
-                celle du clic) pour faciliter l'UX.
-            </p>
-        </div>
-        <div class="entry">
-            <h1 class="entry-header">
-                <span>Semaine 8 (rendez-vous du 16/03)</span>
-            </h1>
-            <p class="entry-paragraph">
-                Nous avons eu le point de mi-session avec M. Lapalme. Il nous a rappelé l'importance du recul
-                sur notre travail, et qu'il fallait qu'on soit prêts à expliquer, avec un esprit critique,
-                le travail effectué au long de la session.
-            </p>
-            <p class="entry-paragraph">
-                J'ai pu finaliser l'implémentation des pages de connexion et d'inscription. À cause de certains
-                enjeux d'ordre d'exécution et de programmation asynchrones, j'ai aussi décidé d'ajouter une
-                page de chargement des données utilisateur pour préparer l'application avant chaque lancement.
-            </p>
-            <p class="entry-paragraph">
-                J'ai fait la page de la liste des découvertes. Pour l'instant il n'y a aucun filtre, et elle
-                affiche les découvertes triées par ID (plus simple pour certaines raisons techniques).
-                J'ai aussi fini une implémentation de la géolocalisation. Normalement ça fonctionne OK, mais
-                il faudra s'assurer du bon fonctionnement avec les permissions sur Android Studio.
-            </p>
-        </div>
-        <div class="entry">
-            <h1 class="entry-header">
-                <span>Semaine 9 (pas de rendez-vous)</span>
-            </h1>
-            <p class="entry-paragraph">
-                J'ai bien avancé sur la structure générale. J'ai pu implémenter :
-            </p>
-            <ul>
-                <li>la page Liste (triée alphabétiquement) et une barre de recherche intégrée</li>
-                <li>la page Collection</li>
-                <li>la page Autres</li>
-                <li>les sous-pages "À propos" et "Qui sommes-nous ?"</li>
-                <li>le tutoriel</li>
-            </ul>
-            <p class="entry-paragraph">
-                En plus de cela, j'ai retravaillé l'onglet carte pour améliorer encore les performances :
-                plutôt que de mettre 1 layer par style de feature, j'ai réussi à mettre tous les pins sur une
-                seule layer.
-            </p>
-            <p class="entry-paragraph">
-                J'ai aussi pu gérer les permissions et le moment où elles sont demandées, et j'ai ajouté une
-                page qui s'ouvre s'il manque des permissions à l'application.
-            </p>
-        </div>
-        <div class="entry">
-            <h1 class="entry-header">
-                <span>Semaine 10 (rendez-vous du 29/03)</span>
-            </h1>
-            <p class="entry-paragraph">
-                J'ai réussi à implémenter la récupération des données (collection, et photos s'il y en a) au
-                moment de la connexion, ainsi que la fonctionnalité qui permet à la DB de se mettre à jour
-                toute seule. Je n'ai pas pu tester cette dernière cependant, mais le code est assez simple donc
-                je doute qu'il y ait des problèmes. J'ai rencontré un problème : le serveur bloque les requêtes
-                au-delà de 60/minutes. J'ai demandé à Natacha d'augmenter cette limite à 240/minutes mais
-                il faudra tôt ou tard implémenter une classe pour gérer les temps d'attente forcés.
-            </p>
-            <p class="entry-paragraph">
-                J'ai mis à jour l'application sur le Play Store en interne avec cette version.
-                C'était assez facile, je m'attendais à avoir des problèmes avec les permissions mais il semble
-                que non. J'en ai profité pour changer les images d'illustration de la page de l'app, qui datent
-                trop et qui sont en trop mauvaise résolution.
-            </p>
-        </div>
+                    Apprentissage du Kotlin, familiarisation avec le code de l'application ; je n'ai pas
+                    d'expérience en développement Android. Je lis les rapports des anciens étudiants pour
+                    avoir une idée globale. Après quelques recherches, je doute qu'il soit plus facile de refaire
+                    une app avec <a href="https://reactjs.org/"><code>React.js</code></a> (trop de travail), mais
+                    j'ai vu <a href="https://ionicframework.com/"><code>Ionic</code></a> qui pourrait être
+                    intéressant.
+                </p>
+                <p class="entry-paragraph"> </p>
+                <p class="entry-paragraph">
+                    <u>Update lundi 6 :</u> j'ai patché le bug de l'œuvre du jour (section vide, à cause d'une sélection
+                    aléatoire invalide d'une œuvre), qui menait au crash de l'application si l'on essayait depuis
+                    la page de l'œuvre du jour de :
+                </p>
+                <ul>
+                    <li>Prendre une photo ;</li>
+                    <li>Cibler l'œuvre d'art ;</li>
+                    <li>Accéder à son emplacement sur la carte.</li>
+                </ul>
+                <p class="entry-paragraph">
+                    En fait, l'ancien code déterminait l'ID de l'œuvre en partant du numéro de mois notamment, et
+                    le divisait par 2. Cependant les mois de janvier et février ont les numéros respectifs 0 et 1,
+                    et la division euclidienne par 2 renvoie donc 0 pour ces deux-là, ce qui mène à un
+                    <code>ID = 0</code>, qui est bien sûr invalide. J'ai décidé de déterminer l'ID de l'œuvre en
+                    initialisant un RNG (Random Number Generator) avec une <em>seed</em> unique dans le temps
+                    <code>(JOUR_ANNEE * 10000 + ANNEE)</code>, puis en générant un entier entre 1 et la taille de la DB des
+                    œuvres.
+                </p>
+                <p class="entry-paragraph">
+                    Je vais essayer de résoudre le problème de caméra qui affecte les Google Pixel d'ici mercredi 8
+                    prochain.
+                </p>
+                <p class="entry-paragraph">
+                </p>
+                <p class="entry-paragraph"> </p>
+                <p class="entry-paragraph">
+                    <u>Update mardi 7 :</u> j'ai résolu le problème de l'appareil photo cassé sur les Google Pixel !
+                    Le problème était causé par une mauvaise syntaxe de la fonction
+                    <code>dispatchTakePictureIntent</code> de la classe <code>œuvreJourFragment</code>. Normalement
+                    le problème ne devrait plus réapparaître.
+                </p>
+                <p class="entry-paragraph"> </p>
+                <p class="entry-paragraph">
+                    <u>Update mardi 7, plus tard :</u> il semblerait que le bug persiste hors du contexte de
+                    l'œuvre du jour... Le problème, c'est que je n'arrive pas à déterminer la section qui gère ce
+                    bouton.
+                </p>
+                <p class="entry-paragraph"> </p>
+                <p class="entry-paragraph">
+                    <u>Update mardi 7 (encore) :</u> j'ai enfin réussi à supprimer l'exception levée à l'obtention
+                    de certains badges ! Il arrivait qu'un booléen soit <code>null</code> ce qui levait une
+                    exception d'assertion.
+                </p>
+            </div>
+            <div class="entry">
+                <h1 class="entry-header">
+                    <span>Semaine 3 (rendez-vous du 8/02)</span>
+                </h1>
+                <p class="entry-paragraph">
+                    À la dernière réunion, on a discuté d'une réécriture complète de l'application, en
+                    Kotlin ou probablement dans un autre langage avec l'aide d'un framework : quitte à
+                    devoir réécrire le code en vue de la migration vers l'API v3, ce serait peut-être
+                    une bonne occasion pour faire table rase.
+                </p>
+                <p class="entry-paragraph">
+                    Lena m'a chargé de faire un comparatif des frameworks/langages du marché pour se faire
+                    une idée et potentiellement en choisir un. On tombe assez rapidement sur 3
+                    possibilités : <a href="https://flutter.dev/">Flutter</a>,
+                    <a href="https://reactnative.dev/">React Native</a> et <a href="https://ionicframework.com/">Ionic</a>.
+                </p>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></td>
+                                    <th>Ionic</td>
+                                        <th>React Native</td>
+                                            <th>Flutter</td>
+                                <th>Kotlin</td>
+                                    <th>Swift</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Performances</td>
+                                        <td>Bonnes</td>
+                                        <td>Bonnes</td>
+                                        <td>Très bonnes</td>
+                                        <td>Maximales</td>
+                                        <td>Maximales</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Taille APK <em>"Hello world!"</em></td>
+                                        <td>3500 Ko</td>
+                                        <td>7000 Ko</td>
+                                        <td>7500 Ko</td>
+                                        <td>550 Ko</td>
+                                        <td>??</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Avantage particulier</td>
+                                        <td>Très facile à apprendre, multi-plateforme</td>
+                                <td>Utile pour le multi-plateforme proche des éléments natifs</td>
+                                <td>Agréable à développer, performant</td>
+                                <td>Natif, 100% compatible JVM, performant</td>
+                                <td>Natif, facile à développer, performant</td>
+                            </tr>
+                            <tr>
+                                <td>Désavantage particulier</td>
+                                <td>Peu adapté aux projets de grande échelle, feeling web</td>
+                                <td>Apprendissage relativement difficile</td>
+                                <td>Nécessite la connaissance de Dart</td>
+                                <td>Verbeux, contraignant, relativement laid</td>
+                                <td>Exclusif aux produits Apple</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="entry-paragraph">
+                    Tous les langages/frameworks peuvent utiliser les composants de
+                    l'appareil (caméra, GPS et stockage). J'ai un peu de mal à saisir la différence entre Ionic et React Native,
+                    mais je crois qu'alors que React Native manipule des éléments natifs
+                    par une sous-couche Kotlin (et passe par le JS pour l'implémentation),
+                    Ionic utilise un arbre DOM, en HTML couplé au CSS pour le rendu ; cela
+                    vient avec tous les défauts et qualités du Web, notamment pour les
+                    performances.
+                </p>
+                <p class="entry-paragraph">
+                    Cependant, le <a href="https://ionic.io/blog/ionic-vs-react-native-performance-comparison">post de blog de Ionic</a>
+                    (et malgré son biais évident), montre que les performances des deux se
+                    valent, voire une meilleure utilisation GPU d'Ionic selon l'analyseur
+                    de Xcode.
+                </p>
+                <p class="entry-paragraph">
+                    <u>Update vendredi 10 :</u> j'ai essayé de reproduire l'interface de base
+                    de l'application sur Ionic. Ca semble assez facile, bien que la tentative
+                    reste très simple et reste de l'interface.
+                </p>
+            </div>
+            <div class="entry">
+                <h1 class="entry-header">
+                    <span>Semaine 4 (rendez-vous du 15/02)</span>
+                </h1>
+                <p class="entry-paragraph">
+                    Nous avons pu rencontrer Guy Lapalme à l'occasion de la dernière réunion. J'ai pu y présenter
+                    les différentes alternatives qui se présentent à l'équipe, dans l'optique de reconstruire
+                    l'application. De toutes les options, la majorité du groupe a penché vers Ionic.
+                </p>
+                <p class="entry-paragraph">
+                    Je me suis attelé à l'apprentissage d'Ionic auquel est associé <a href="https://vuejs.org/">Vue.js</a>
+                </p>
+                <p class="entry-paragraph">
+                    J'ai eu du mal à implémenter la carte dans l'application en utilisant <a href="https://leafletjs.com/">Leaflet</a>,
+                    si bien que j'ai fini par abandonner au profit d'<a href="https://openlayers.org/">OpenLayers</a>.
+                    L'intégration était beaucoup plus naturelle et c'était plus agréable. Je me suis ensuite concentré
+                    sur la création des classes de bases de données de l'application. J'ai pu télécharger les
+                    données automatiquement depuis l'API V3, mais je n'ai pas encore réussi à écrire le contenu
+                    dans un fichier stable.
+                </p>
+            </div>
+            <div class="entry">
+                <h1 class="entry-header">
+                    <span>Semaine 5 (rendez-vous du 24/02)</span>
+                </h1>
+                <p class="entry-paragraph">
+                    Nous avons eu une réunion avec Barbara, la graphiste. Elle a conçu un nouveau tutoriel
+                    et nous a expliqué comment se servir de Figma pour exporter les différents assets dont
+                    on peut avoir besoin. C'était très intéressant.
+                </p>
+                <p class="entry-paragraph">
+                    <u>Update 25/02 :</u> j'ai réussi à faire en sorte que l'application lise et écrive dans
+                    des fichiers.
+                </p>
+                <p class="entry-paragraph">
+                    <u>Update 26/02 :</u> j'ai changé le style de la carte de
+                    <a href="http://maps.stamen.com/watercolor/#12/37.7794/-122.3631">Watercolor</a> à
+                    <a href="http://maps.stamen.com/toner-lite/#12/37.7706/-122.3782">Toner Lite</a>. C'était
+                    marrant mais pas très accessible come style de tuiles.
+                </p>
+                <p class="entry-paragraph">
+                    <u>Update 01/03 :</u> j'a retravaillé la page de découverte du jour. Elle est plus propre
+                    en termes de code, et correspond mieux aux mockups du Figma.
+                </p>
+            </div>
+            <div class="entry">
+                <h1 class="entry-header">
+                    <span>Semaine 6 (rendez-vous du 02/03)</span>
+                </h1>
+                <p class="entry-paragraph">
+                    Je poursuis le travail de l'application. J'ai essayé de faire un splash screen pour
+                    temporiser le temps que l'application récupère les données. Au final, j'ai trouvé une meilleure
+                    solution qui consiste à lancer les bases de données avant l'ouverture de l'application pour
+                    éviter de lancer l'interface avant le chargement des œuvres. Je compte maintenant travailler
+                    sur la prise de photo depuis la page des détails d'une découverte.
+                </p>
+                <p class="entry-paragraph">
+                    <u>Update 04/03 :</u> je suis en train d'implémenter la prise de photos depuis les détails d'une
+                    oeuvre. Je travaille aussi sur la page de notation d'une œuvre. L'apparence devrait être terminée
+                    pour les 2. Il faut maintenant travailler sur le code interne.
+                </p>
+                <p class="entry-paragraph">
+                    J'ai ajouté la prise de photo, puis j'ai conçu la page de review d'une œuvre. En revanche, impossible
+                    de téléverser la photo au serveur. J'ai passé 4 jours à essayer différentes méthodes mais je serveur me
+                    renvoie inévitablement une <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422">
+                        erreur code 422</a> avec comme "explication" : <code>{'message': 'The given data was invalid.', 'errors': {'photo': ['The photo must be a file of type: jpeg, jpg, png.']}}</code>. J'ai essayé tellement de manière différentes, je me demande si le serveur n'accepte pas un format de données particulier, et
+                        <a href="https://github.com/imglab/mona-server/wiki/Artworks-API-Endpoints#post-apiv3userartworks">la documentation</a> n'est pas assez précise.
+                    </p>
+                </div>
+                <div class="entry">
+                    <h1 class="entry-header">
+                        <span>Semaine 7 (pas de rendez-vous)</span>
+                    </h1>
+                    <p class="entry-paragraph">
+                        Le problème de téléversement est résolu ! Abdelhakim s'est penché sur le problème et a réussi à
+                        trouver un moyen de faire la requête correctement (merci à lui et à Thomas de m'avoir aidé).
+                        J'ai donc pu finir le système de prise de photo et ça fonctionne (enfin presque : il arrive que
+                    la photo ne soit pas prise en compte localement et ça marche au 2<sup>e</sup> essai, il faut
+                    que je regarde pourquoi).
+                </p>
+                <p class="entry-paragraph">
+                    D'un autre côté, j'ai retravaillé complètement la manière dont les pins sont affichés sur la
+                    carte, maintenant tous les pins (peu importe leur asset) sont affichés sur une seule <em>layer</em>
+                    alors qu'il en fallait une par asset auparavant (approximativement une dizaine). Je réfléchis
+                    aussi à retirer le bouton de changement du fond de carte. En effet, il manque des tuiles aux fonds
+                    <em>Stamen</em> à partir d'un certain zoom (<a href="https://github.com/stamen/maps.stamen.com/issues/97">issue #97</a>).
+                </p>
+                <p class="entry-paragraph">
+                    J'ai mis en place le système de popup focus sur la carte quand on clique sur une découverte.
+                    Normalement tout fonctionne correctement en termes de focus/unfocus automatique (unfocus si on
+                    appuie ailleurs par exemple). Idéalement il faudrait que j'augmente la hitbox des pins (ou
+                    celle du clic) pour faciliter l'UX.
+                </p>
+            </div>
+            <div class="entry">
+                <h1 class="entry-header">
+                    <span>Semaine 8 (rendez-vous du 16/03)</span>
+                </h1>
+                <p class="entry-paragraph">
+                    Nous avons eu le point de mi-session avec M. Lapalme. Il nous a rappelé l'importance du recul
+                    sur notre travail, et qu'il fallait qu'on soit prêts à expliquer, avec un esprit critique,
+                    le travail effectué au long de la session.
+                </p>
+                <p class="entry-paragraph">
+                    J'ai pu finaliser l'implémentation des pages de connexion et d'inscription. À cause de certains
+                    enjeux d'ordre d'exécution et de programmation asynchrones, j'ai aussi décidé d'ajouter une
+                    page de chargement des données utilisateur pour préparer l'application avant chaque lancement.
+                </p>
+                <p class="entry-paragraph">
+                    J'ai fait la page de la liste des découvertes. Pour l'instant il n'y a aucun filtre, et elle
+                    affiche les découvertes triées par ID (plus simple pour certaines raisons techniques).
+                    J'ai aussi fini une implémentation de la géolocalisation. Normalement ça fonctionne OK, mais
+                    il faudra s'assurer du bon fonctionnement avec les permissions sur Android Studio.
+                </p>
+            </div>
+            <div class="entry">
+                <h1 class="entry-header">
+                    <span>Semaine 9 (pas de rendez-vous)</span>
+                </h1>
+                <p class="entry-paragraph">
+                    J'ai bien avancé sur la structure générale. J'ai pu implémenter :
+                </p>
+                <ul>
+                    <li>la page Liste (triée alphabétiquement) et une barre de recherche intégrée</li>
+                    <li>la page Collection</li>
+                    <li>la page Autres</li>
+                    <li>les sous-pages "À propos" et "Qui sommes-nous ?"</li>
+                    <li>le tutoriel</li>
+                </ul>
+                <p class="entry-paragraph">
+                    En plus de cela, j'ai retravaillé l'onglet carte pour améliorer encore les performances :
+                    plutôt que de mettre 1 layer par style de feature, j'ai réussi à mettre tous les pins sur une
+                    seule layer.
+                </p>
+                <p class="entry-paragraph">
+                    J'ai aussi pu gérer les permissions et le moment où elles sont demandées, et j'ai ajouté une
+                    page qui s'ouvre s'il manque des permissions à l'application.
+                </p>
+            </div>
+            <div class="entry">
+                <h1 class="entry-header">
+                    <span>Semaine 10 (rendez-vous du 29/03)</span>
+                </h1>
+                <p class="entry-paragraph">
+                    J'ai réussi à implémenter la récupération des données (collection, et photos s'il y en a) au
+                    moment de la connexion, ainsi que la fonctionnalité qui permet à la DB de se mettre à jour
+                    toute seule. Je n'ai pas pu tester cette dernière cependant, mais le code est assez simple donc
+                    je doute qu'il y ait des problèmes. J'ai rencontré un problème : le serveur bloque les requêtes
+                    au-delà de 60/minutes. J'ai demandé à Natacha d'augmenter cette limite à 240/minutes mais
+                    il faudra tôt ou tard implémenter une classe pour gérer les temps d'attente forcés.
+                </p>
+                <p class="entry-paragraph">
+                    J'ai mis à jour l'application sur le Play Store en interne avec cette version.
+                    C'était assez facile, je m'attendais à avoir des problèmes avec les permissions mais il semble
+                    que non. J'en ai profité pour changer les images d'illustration de la page de l'app, qui datent
+                    trop et qui sont en trop mauvaise résolution.
+                </p>
+            </div>
 
-        <div class="entry">
-            <h1 class="entry-header">
-                <span>Semaine 11 (rendez-vous du 05/04)</span>
-            </h1>
-            <p class="entry-paragraph">
-                J'ai commencé à implémenter la page des badges sur le menu collection. Pour simplifier et
-                accélérer le développement, je ne pars pas (du moins pour le moment) sur l'idée de deux onglets
-                en haut comme sur <a href="https://www.figma.com/file/s0ardw6yLEeG2Ca7HfbWYT/Mona---Interfaces">le Figma</a>,
-                mais sur un bouton centré qui redirige vers un composant Vue. Ca n'est pas optimal mais ça aura
-                le mérite de fonctionner tout autant.
-            </p>
-            <p class="entry-paragraph">
-                J'ai aussi (enfin) réussi à mettre l'icône à l'application, qui gardait celle par
-                défaut jusqu'à maintenant. J'ai dû télécharger le fichier Illustrator et changer la taille du motif
-                central parce qu'il est trop grand et ne tient pas dans le cercle inscrit (et donc il dépassait,
-                <a href="https://imgur.com/a/g01O9Rq">voir exemple</a>). J'ai testé sur Android 13 et ça fonctionne,
-                mais pas encore vérifié sur les versions plus anciennes.
-            </p>
-            <p class="entry-paragraph">
-                Un test avec un autre appareil m'a fait
-                réaliser que lorsqu'on demande les permissions de géolocalisation alors que le GPS est désactivé,
-                la requête crashe. J'ai résolu ce problème.
-            </p>
+            <div class="entry">
+                <h1 class="entry-header">
+                    <span>Semaine 11 (rendez-vous du 05/04)</span>
+                </h1>
+                <p class="entry-paragraph">
+                    J'ai commencé à implémenter la page des badges sur le menu collection. Pour simplifier et
+                    accélérer le développement, je ne pars pas (du moins pour le moment) sur l'idée de deux onglets
+                    en haut comme sur <a href="https://www.figma.com/file/s0ardw6yLEeG2Ca7HfbWYT/Mona---Interfaces">le Figma</a>,
+                    mais sur un bouton centré qui redirige vers un composant Vue. Ca n'est pas optimal mais ça aura
+                    le mérite de fonctionner tout autant.
+                </p>
+                <p class="entry-paragraph">
+                    J'ai aussi (enfin) réussi à mettre l'icône à l'application, qui gardait celle par
+                    défaut jusqu'à maintenant. J'ai dû télécharger le fichier Illustrator et changer la taille du motif
+                    central parce qu'il est trop grand et ne tient pas dans le cercle inscrit (et donc il dépassait,
+                    <a href="https://imgur.com/a/g01O9Rq">voir exemple</a>). J'ai testé sur Android 13 et ça fonctionne,
+                    mais pas encore vérifié sur les versions plus anciennes.
+                </p>
+                <p class="entry-paragraph">
+                    Un test avec un autre appareil m'a fait
+                    réaliser que lorsqu'on demande les permissions de géolocalisation alors que le GPS est désactivé,
+                    la requête crashe. J'ai résolu ce problème.
+                </p>
+            </div>
         </div>
     </div>
 </body>
