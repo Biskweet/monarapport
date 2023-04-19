@@ -86,8 +86,7 @@ ul {
 
 a {
     color: #ba8500;
-    text-decoration: none;
-    border-bottom: 2px solid #ba8500;
+    text-underline-offset: 2px;
 }
 
 table {
@@ -181,4 +180,9 @@ video {
         z-index: -1;
         position: absolute;
     }
+}
+
+li.done::after {
+    content: " ✅";
+    list-style: none;
 }

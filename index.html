@@ -349,9 +349,50 @@
                     mais pas encore vérifié sur les versions plus anciennes.
                 </p>
                 <p class="entry-paragraph">
-                    Un test avec un autre appareil m'a fait
-                    réaliser que lorsqu'on demande les permissions de géolocalisation alors que le GPS est désactivé,
-                    la requête crashe. J'ai résolu ce problème.
+                    Un test avec un autre appareil m'a fait réaliser que lorsqu'on demande les permissions de
+                    géolocalisation alors que le GPS est désactivé, la requête crashe. J'ai résolu ce problème.
+                </p>
+            </div>
+
+            <div class="entry">
+                <h1 class="entry-header">
+                    <span>Semaine 12 (rendez-vous du 12/04)</span>
+                </h1>
+                <p class="entry-paragraph">
+                    Nous avons eu la réunion de test mercredi dernier, qui nous a valu un retour utilisateur très
+                    utile. Nous avons trouvé des bugs, ainsi que plusieurs remarques pertinentes concernant l'UX :
+                </p>
+                <p class="entry-paragraph">
+                    Bugs :
+                </p>
+                <ul>
+                    <li>Le serveur n'accepte pas les images plus grande que 2 Mo par sa configuration (problème critique)</li>
+                    <li class="done">La recherche par mots-clefs ne gère pas les lettres accentuées</li>
+                    <li>Il arrive que la photo sur la page des détails d'une découverte ne s'affiche pas</li>
+                    <li class="done">Il arrive que le titre d'une découverte dépasse du popup sur la carte.</li>
+                </ul>
+                <p class="entry-paragraph">
+                    Suggestions d'amélioration de l'UX :
+                </p>
+                <ul>
+                    <li>Ajouter une estimation de la précision du GPS, qui se met à jour en temps réel</li>
+                    <li class="done">Augmenter la taille du bouton "rafraîchir" et changer son icône pour le rendre plus clair</li>
+                    <li class="done">Afficher l'adresse ou l'emplacement de la découverte sur sa page des détails</li>
+                    <li class="done">Rendre les pages d'inscription/connexion plus claires sur leur nature respective</li>
+                    <li class="done">La police de la description d'une découverte est un peu trop petite et difficile à lire.</li>
+                </ul>
+                <p class="entry-paragraph">
+                    Les éléments marqués d'un <code>✅</code> ont été corrigés.
+                </p>
+                <p class="entry-paragraph">
+                    À propos du texte qui dépasse des popups sur la carte, j'en ai retravaillé complètement
+                    le CSS. On ne devrait plus avoir ce problème. Le problème du serveur n'est pas encore corrigé
+                    mais cela devrait être assez facile, si l'on trouve quelqu'un qui a les droits super user.
+                    J'estime que 32 Mo est une limite suffisante pour ne plus rencontrer ce problème du tout. Si
+                    c'est trop grand, 16 Mo est, je pense, le minimum absolu. Avec l'augmentation de la qualité photo des
+                    appareils ainsi que l'agrandissement du stockage interne, une photo lambda pèse facilement 5+ Mo.
+                    Puisqu'on a ajouté la possibilité d'enjoyer un photo de la galerie, il faut s'attendre à ce que les
+                    photos puissent atteindre les 10 Mo (un panorama par exemple a une très grande résolution).
                 </p>
             </div>
         </div>
