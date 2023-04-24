@@ -182,7 +182,47 @@ video {
     }
 }
 
-li.done::after {
-    content: " ✅";
+ul.checked-ul {
     list-style: none;
+}
+
+ul.checked-ul li::before {
+    content: "• ";
+}
+
+ul.checked-ul li.done::before {
+    content: "✅ ";
+}
+
+.project-report {
+    margin: auto;
+    max-width: 300px;
+    background-color: #FADA00;
+    border-radius: 20px;
+    padding: 20px;
+    font-weight: bolder;
+    font-family: "EB Garamond";
+    font-size: 24px;
+    text-align: center;
+    transition: all 0.25s ease-out;
+    margin-bottom: 50px;
+    height: 40px;
+}
+
+.project-report-text {
+    margin: auto;
+    line-height: 40px;
+}
+
+.project-report:hover {
+    background-color: hsl(52, 100%, 47%);
+    filter: drop-shadow(0 0 3px hsl(52, 100%, 47%));
+    font-size: 24.3px;
+    user-select: none;
+}
+
+.end-whitespace {
+    height: 10vw;
+    background: transparent;
+    border: none;
 }
