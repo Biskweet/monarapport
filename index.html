@@ -8,7 +8,13 @@
     <link rel="stylesheet" href="static/style.css">
     <link rel="icon" type="image/x-icon" href="static/favicon.ico">
     <script>
-        let currentTheme = "light";
+        let currentTheme;
+        if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            currentTheme = "dark";
+            document.querySelector(".icon").classList.add("inverted");
+        } else
+            currentTheme = "light";
+
         const r = document.querySelector(":root");
 
         function changeTheme() {
